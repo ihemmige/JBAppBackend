@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import Flask, make_response
 
 app = Flask(__name__)
 
@@ -12,4 +13,7 @@ jobs = [
 
 @app.get('/')
 def index():
-    return {"result":jobs}
+    # return {"result":jobs}
+  response = make_response({"result": jobs})
+  response.headers['Access-Control-Allow-Origin'] = '*'
+  return response
