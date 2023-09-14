@@ -28,4 +28,6 @@ def create():
   jobs.append({"company": company, "title": title, "location": location, "salary": salary})
   response = make_response({"result": jobs})
   response.headers['Access-Control-Allow-Origin'] = '*'
+  response.headers['Access-Control-Allow-Methods'] = '*'
+  response.header['Access-Control-Allow-Headers'] = '*'
   return response
