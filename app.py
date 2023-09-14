@@ -1,5 +1,6 @@
-from flask import Flask
-from flask import Flask, make_response
+from flask import Flask, make_response, request
+# from flask_smorest import Api, Blueprint
+# from schemas import JobSchema
 
 app = Flask(__name__)
 
@@ -10,10 +11,21 @@ jobs = [
     {"company": "Amazon", "title": "Data Scientist", "location": "Seattle", "salary": 40000},
     {"company": "Johns Hopkins", "title": "Professor", "location": "Baltimore", "salary": 50000}
   ]
+# jobs = []
 
-@app.get('/')
+@app.get('/jobs')
 def index():
-    # return {"result":jobs}
+  response = make_response({"result": jobs})
+  response.headers['Access-Control-Allow-Origin'] = '*'
+  return response
+
+@app.post('/jobs')
+def create():
+  company = request.args.get('company')
+  title = request.args.get('title')
+  location = request.args.get('location')
+  salary = request.args.get('salary')
+  jobs.append({"company": company, "title": title, "location": location, "salary": salary})
   response = make_response({"result": jobs})
   response.headers['Access-Control-Allow-Origin'] = '*'
   return response
