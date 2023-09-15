@@ -1,8 +1,10 @@
 from flask import Flask, make_response, request
 # from flask_smorest import Api, Blueprint
 # from schemas import JobSchema
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 jobs = [
     {"company": "Apple", "title": "Recruiter", "location": "Timbuktu", "salary": 10000}, 
@@ -11,7 +13,6 @@ jobs = [
     {"company": "Amazon", "title": "Data Scientist", "location": "Seattle", "salary": 40000},
     {"company": "Johns Hopkins", "title": "Professor", "location": "Baltimore", "salary": 50000}
   ]
-# jobs = []
 
 @app.get('/jobs')
 def index():
@@ -28,6 +29,4 @@ def create():
   jobs.append({"company": company, "title": title, "location": location, "salary": salary})
   response = make_response({"result": jobs})
   response.headers['Access-Control-Allow-Origin'] = '*'
-  response.headers['Access-Control-Allow-Methods'] = '*'
-  response.headers['Access-Control-Allow-Headers'] = '*'
   return response
