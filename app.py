@@ -29,5 +29,5 @@ def create():
   response = make_response({"result": jobs})
   response.headers['Access-Control-Allow-Origin'] = '*'
   response.headers['Access-Control-Allow-Methods'] = '*'
-  response.header['Access-Control-Allow-Headers'] = '*'
+  response.headers['Access-Control-Allow-Headers'] = '*'
   return response
