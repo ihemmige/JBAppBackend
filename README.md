@@ -1,5 +1,5 @@
 # JBAppBackend
-Backend for JBApp (job board app). This is a Flask server that interfaces with a PostgreSQL db on supabase.
+Backend for JBApp (job board app). This is a Flask server that interfaces with a PostgreSQL db on Supabase.
 
 The server is deployed on Azure at https://jbappbackend.azurewebsites.net
 
