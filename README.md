@@ -17,3 +17,5 @@ To run locally:
 2. Create a python3 virtual env (python3 -m venv venv) and activate it (source venv/bin/activate). 
 3. Then, install the requirements in the venv (pip install -r requirements.txt).
 4. Finally, the server should run with command 'flask run' on localhost:5000.
+
+* Note: flask server won't run as is, as the .env file with the database url and key are not in the repository.
