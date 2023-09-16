@@ -19,3 +19,7 @@ def add_job(company,title,location,salary):
   }
   data = supabase.table("Jobs").insert(job).execute()
   return data.data
+
+def delete_all_jobs():
+  data = supabase.table("Jobs").delete().neq("id",0).execute()
+  return data.data

@@ -1,6 +1,6 @@
 from flask import Flask, make_response, request
 from flask_cors import CORS
-from store import get_all_jobs, add_job
+from store import get_all_jobs, add_job, delete_all_jobs
 app = Flask(__name__)
 CORS(app)
 
@@ -28,6 +28,13 @@ def create():
   
   add_job(company,title,location,salary)
   data = get_all_jobs()
+  response = make_response({"result": data})
+  response.headers['Access-Control-Allow-Origin'] = '*'
+  return response
+
+@app.delete('/jobs')
+def delete():
+  data = delete_all_jobs()
   response = make_response({"result": data})
   response.headers['Access-Control-Allow-Origin'] = '*'
   return response
